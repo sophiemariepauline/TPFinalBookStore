@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+
+
+<h:head></h:head> 
+<body> 
+<h:form>
+		<h1>Ajout d'un Livre :</h1>
+		<h:form>
+			<p>
+				Titre :
+				<h:inputText value="#{Books.titre}" />
+			</p>
+			<p>
+				Auteur :
+				<h:inputText value="#{Books.auteur}" />
+			</p>
+			<p>
+				Date de publication :
+				<h:inputText value="#{Books.date}" />
+			</p>
+			<p>
+				Prix :
+				<h:inputText value="#{Books.prix}" />
+			</p>
+		
+			<h:commandButton value="Register" action="#{Books.save}" />
+		</h:form>
+	</h:form>
+	
+	<h:form>
+
+		<p>
+			titre du livre :
+			<h:selectOneMenu value="#{BookDao.}">
+				<f:selectItems value="#{BookDao.}" />
+			</h:selectOneMenu>
+		</p>
+		<h:commandButton action="Affichage"
+			value="affichage de votre etudiant" />
+	</h:form>
+
+	
+</body> 
+</html>
