@@ -1,0 +1,66 @@
+package dao;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import entity.Books;
+import util.HibernateUtil;
+
+public class BookDao {
+	public static void persist(Books b) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tr = session.beginTransaction();
+
+		try {
+			session.persist(b);
+			tr.commit();
+		} catch (Exception e) {
+			tr.rollback();
+		}
+
+		session.close();
+	}
+
+	public static Books read(int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tr = session.beginTransaction();
+		Books b = null;
+
+		try {
+			b = session.get(Books.class, b.getId());
+			tr.commit();
+		} catch (Exception e) {
+			tr.rollback();
+		}
+		session.close();
+		return b;
+	}
+
+	public static void update(Books b) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tr = session.beginTransaction();
+
+		try {
+			session.update(b);
+			tr.commit();
+		} catch (Exception e) {
+			tr.rollback();
+		}
+		session.close();
+	}
+
+	public static void delete(Books b) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tr = session.beginTransaction();
+
+		try {
+			Books r = session.get(Books.class, b.getId());
+			session.delete(r);
+			tr.commit();
+		} catch (Exception e) {
+			tr.rollback();
+		}
+		session.close();
+	}
+
+}
